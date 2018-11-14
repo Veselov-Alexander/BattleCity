@@ -245,7 +245,7 @@ class Boss(Enemy):
     def draw(self):
         GameObject.draw(self, 0)
      
-    def shoot(self):
+    def splash_shoot(self):
         if self.reloading_stage != Tank.RELOADING_TICKS or self.bullets_count == 0:
             return None
         points = list()
@@ -276,7 +276,7 @@ class Boss(Enemy):
             self.health = min(self.health + 1, 1000)
             self.regen = 0
         self.AI(scene)
-        bullets = self.shoot()
+        bullets = self.splash_shoot()
         if bullets:
             for bullet in bullets:
                 scene.dynamic_objects.append(bullet)
